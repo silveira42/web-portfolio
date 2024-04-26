@@ -1,0 +1,14 @@
+---
+name: silver-portfolio-dev
+services:
+  app:
+    container_name: silver-portfolio-dev-c
+    image: silver-portfolio-dev-i
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    ports:
+      - "3043:3000"
