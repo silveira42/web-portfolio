@@ -1,12 +1,8 @@
-import React from 'react';
-
-function App() {
+export default function App() {
 	return (
 		<div className='App'>
 			<header className='App-header'>
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
+				<p>Under construction, please come back another day :)</p>
 				<a
 					className='App-link'
 					href='https://reactjs.org'
@@ -19,5 +15,3 @@ function App() {
 		</div>
 	);
 }
-
-export default App;
