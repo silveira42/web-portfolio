@@ -1,0 +1,11 @@
+@import '../../App.css';
+
+.project {
+	background-color: #f0f0f0;
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	height: 200px;
+}

@@ -11,4 +11,4 @@ services:
       - ./src:/app/src
       - ./public:/app/public
     ports:
-      - "3043:3000"
+      - '3043:3000'

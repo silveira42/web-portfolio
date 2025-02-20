@@ -1,0 +1,32 @@
+@import '../../App.css';
+
+.footer {
+	background-color: #f0f0f0;
+	border-radius: 5px;
+	margin-top: 20px;
+	padding-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	bottom: 0;
+	min-height: 80px;
+	width: 100vw;
+}
+
+.footer-menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	align-items: center;
+	gap: 20px;
+}
+
+.footer-menu-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
