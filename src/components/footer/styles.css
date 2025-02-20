@@ -1,7 +1,8 @@
 @import '../../App.css';
 
 .footer {
-	background-color: #f0f0f0;
+	background-color: var(--foreground-1);
+	color: var(--primary);
 	border-radius: 5px;
 	margin-top: 20px;
 	padding-bottom: 10px;
@@ -12,7 +13,7 @@
 	position: relative;
 	bottom: 0;
 	min-height: 80px;
-	width: 100vw;
+	transition: background-color var(--transition), color var(--transition);
 }
 
 .footer-menu {
@@ -24,9 +25,11 @@
 }
 
 .footer-menu-item {
+	background-color: var(--foreground-2);
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	padding: 10px;
+	border-radius: 5px;
 }

@@ -1,13 +1,15 @@
 @import '../../App.css';
 
 .header {
-	background-color: #f0f0f0;
-	padding: 20px;
+	background-color: var(--foreground-1);
+	color: var(--primary);
 	margin-bottom: 20px;
+	padding: 20px;
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
 	height: 50px;
+	transition: background-color var(--transition), color var(--transition);
 }
 
 .header-menu {

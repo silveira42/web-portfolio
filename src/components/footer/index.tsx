@@ -1,8 +1,11 @@
+import { useContext } from '../../AppContext';
 import './styles.css';
 
 export default function Footer() {
+	const { theme } = useContext();
+
 	return (
-		<footer className='footer'>
+		<footer className='footer' data-theme={theme.getCurrent()}>
 			<div className='footer-title'>
 				<h4>Portfólio de Bruno Silveira</h4>
 			</div>

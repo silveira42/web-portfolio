@@ -1,8 +1,12 @@
+import { useContext } from '../../AppContext';
+import ThemeChooser from '../themeChooser';
 import './styles.css';
 
 export default function Header() {
+	const { theme } = useContext();
+
 	return (
-		<header className='header'>
+		<header className='header' data-theme={theme.getCurrent()}>
 			<div className='header-title'>
 				<h2>Bruno Silveira</h2>
 			</div>
@@ -24,6 +28,7 @@ export default function Header() {
 				>
 					Github
 				</a>
+				<ThemeChooser />
 			</div>
 		</header>
 	);

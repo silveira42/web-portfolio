@@ -1,3 +1,4 @@
+import { useContext } from '../../AppContext';
 import { ProjectModel } from '../../model/project';
 import './styles.css';
 
@@ -6,8 +7,10 @@ type ProjectProps = {
 };
 
 export default function Project(props: ProjectProps) {
+	const { theme } = useContext();
+
 	return (
-		<div className='project'>
+		<div className='project' data-theme={theme.getCurrent()}>
 			<h3>{props.project.title}</h3>
 			<p>{props.project.description}</p>
 			<ul>
