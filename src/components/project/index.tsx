@@ -11,19 +11,47 @@ export default function Project(props: ProjectProps) {
 
 	return (
 		<div className='project' data-theme={theme.getCurrent()}>
-			<h3>{props.project.title}</h3>
-			<p>{props.project.description}</p>
-			<ul>
-				{props.project.technologies.map((technology, index) => (
-					<li key={index}>{technology}</li>
-				))}
-			</ul>
-			<a href={props.project.linkToCode} target='_blank' rel='noreferrer'>
-				Code
-			</a>
-			<a href={props.project.linkToDemo} target='_blank' rel='noreferrer'>
-				Demo
-			</a>
+			<div className='project-header'>
+				<div className='project-title'>
+					<h3>{props.project.title}</h3>
+				</div>
+				<div className='project-links'>
+					{props.project.linkToCode && (
+						<a
+							className='project-link project-link-to-code'
+							href={props.project.linkToCode}
+							target='_blank'
+							rel='noreferrer'
+						>
+							Code
+						</a>
+					)}
+					{props.project.linkToDemo && (
+						<a
+							className='project-link project-link-to-demo'
+							href={props.project.linkToDemo}
+							target='_blank'
+							rel='noreferrer'
+						>
+							Demo
+						</a>
+					)}
+				</div>
+			</div>
+			<div className='project-content'>
+				<div className='project-description'>
+					{props.project.description.split('\n').map((line, index) => (
+						<p key={index}>{line}</p>
+					))}
+				</div>
+				<div className='project-technologies'>
+					{props.project.technologies.map((technology, index) => (
+						<p key={index} className='project-technology-tag'>
+							{technology}
+						</p>
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }

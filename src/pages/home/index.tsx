@@ -4,23 +4,26 @@ import './styles.css';
 
 const frontProjects = [
 	{
-		title: 'Landing Page',
-		description: 'This is a third project',
-		technologies: ['React', 'TypeScript'],
+		title: 'Silver Hub',
+		description:
+			'Esta é a landing page que criei para utilizar na raiz do meu domínio. Utilizo arquivos de configuração e uma arquitetura flexível para poder adicionar e remover aplicativos da página com facilidade.',
+		technologies: ['React TS'],
 		linkToCode: 'https://github.com/silveira42/web-landing-page',
 		linkToDemo: 'https://thesilver.com.br/',
 	},
 	{
 		title: 'Jogo da forca',
-		description: 'This is a project',
-		technologies: ['React', 'TypeScript'],
+		description:
+			'Um simples porém divertido jogo da forca que desenvolvi para praticar React com TypeScript.',
+		technologies: ['React TS'],
 		linkToCode: 'https://github.com/silveira42/forca-react',
 		linkToDemo: 'https://forca.thesilver.com.br/',
 	},
 	{
 		title: 'Jogo Pong',
-		description: 'This is another project',
-		technologies: ['React', 'TypeScript'],
+		description:
+			'Um dos primeiros jogos de computador já criados, agora em React.',
+		technologies: ['React TS'],
 		linkToCode: 'https://github.com/silveira42/pong-react',
 		linkToDemo: 'https://pong.thesilver.com.br/',
 	},
@@ -29,21 +32,15 @@ const frontProjects = [
 const backProjects = [
 	{
 		title: 'Kafka Store API',
-		description: 'This is a third project',
-		technologies: ['React', 'TypeScript'],
+		description:
+			'Uma API de loja virtual que utiliza Apache Kafka para comunicação entre microserviços.',
+		technologies: ['Kafka', 'Node TS'],
 		linkToCode: 'https://github.com/silveira42/kafka-store-api',
 	},
 	{
-		title: 'IRIS® Demo',
-		description: 'This is a project',
-		technologies: ['React', 'TypeScript'],
-		linkToCode: 'https://github.com/silveira42/iris-demo',
-		linkToDemo: 'https://irisdemo.thesilver.com.br/csp/sys/UtilHome.csp',
-	},
-	{
 		title: 'ERP Backend',
-		description: 'This is another project',
-		technologies: ['React', 'TypeScript'],
+		description: 'Uma API de um sistema ERP que utilizo no projeto IRIS Demo.',
+		technologies: ['Node TS'],
 		linkToCode: 'https://github.com/silveira42/erp-demo-backend-ts',
 	},
 ];
@@ -51,14 +48,16 @@ const backProjects = [
 const sysadmProjects = [
 	{
 		title: 'Beam',
-		description: 'This is a third project',
-		technologies: ['React', 'TypeScript'],
+		description:
+			'Um webserver nginx que controlo via Docker e utilizo para compartilhar arquivos entre dispositivos com uma página web simples para melhor experiência.',
+		technologies: ['Nginx', 'HTML'],
 		linkToCode: 'https://github.com/silveira42/beam',
 	},
 	{
-		title: 'Pastas para Branches Git',
-		description: 'This is a project',
-		technologies: ['React', 'TypeScript'],
+		title: '"Pastas para Branches" Git',
+		description:
+			'Em alguns projetos antigos, algumas pessoas costumavam versionar o código criando uma versão por pasta. Portanto, desenvolvi este script para realizar essa tarefa tediosa de forma automatizada.',
+		technologies: ['Shell', 'Git'],
 		linkToCode: 'https://github.com/silveira42/folders-to-git-branches',
 	},
 ];
@@ -66,8 +65,9 @@ const sysadmProjects = [
 const fullProjects = [
 	{
 		title: 'IRIS Demo',
-		description: 'This is a third project',
-		technologies: ['Intersystems® IRIS', 'Node TypeScript', 'React TypeScript'],
+		description:
+			'Neste projeto eu demonstro o uso do Intersystems® IRIS como plataforma de integração entre um ERP e um site de vendas. \nPara isso, desenvolvi tanto a integração quanto ambos sistemas de ponta, e utilizei de submódulos git para organizar o código.',
+		technologies: ['Intersystems® IRIS', 'Node TS', 'React TS'],
 		linkToCode: 'https://github.com/silveira42/iris-mkt-erp-demo',
 		linkToDemo: 'https://thesilver.com.br/',
 	},
