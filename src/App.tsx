@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
+import Header from './components/header';
+import Home from './pages/home';
+import './reset.css';
 import './App.css';
+import Footer from './components/footer';
+import { useContext } from './AppContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+	const { theme } = useContext();
+	return (
+		<div className='App' data-theme={theme.getCurrent()}>
+			<Header />
+			<Home />
+			<Footer />
+		</div>
+	);
 }
-
-export default App;
