@@ -63,6 +63,142 @@
 	margin: 30px 84px;
 }
 
+.mobile-menu-toggle {
+	display: none;
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	z-index: 1000;
+	background: var(--accent-magenta);
+	color: var(--main-background);
+	border: none;
+	font-size: 24px;
+	padding: 10px 15px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: 'JetBrains Mono', monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.mobile-menu-toggle {
+		display: block;
+	}
+
+	.App {
+		flex-direction: column;
+		height: auto;
+		min-height: 100vh;
+	}
+
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: -100%;
+		width: 80%;
+		height: 100vh;
+		background: var(--sidebar-background);
+		z-index: 999;
+		transition: left 0.3s ease;
+		overflow-y: auto;
+		order: 1;
+	}
+
+	.sidebar-open {
+		left: 0;
+	}
+
+	.main-content {
+		width: 100%;
+		height: auto;
+		order: 2;
+		margin-top: 60px;
+	}
+
+	.content-wrapper {
+		width: calc(100% - 40px);
+		margin: 20px;
+	}
+
+	.file-tree {
+		width: 100%;
+	}
+
+	.file-tree-content {
+		max-height: none;
+	}
+
+	/* Adjust font sizes for mobile */
+	.name {
+		font-size: 48px !important;
+		line-height: 60px !important;
+	}
+
+	.role {
+		font-size: 28px !important;
+		line-height: 36px !important;
+	}
+
+	.greeting {
+		font-size: 18px !important;
+		line-height: 24px !important;
+	}
+
+	.terminal-prompt {
+		font-size: 20px !important;
+		line-height: 28px !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.content-wrapper {
+		width: calc(100% - 20px);
+		margin: 10px;
+	}
+
+	.sidebar {
+		padding: 15px;
+	}
+
+	.name {
+		font-size: 36px !important;
+		line-height: 48px !important;
+	}
+
+	.role {
+		font-size: 24px !important;
+		line-height: 32px !important;
+	}
+
+	.greeting {
+		font-size: 16px !important;
+		line-height: 22px !important;
+	}
+
+	.terminal-prompt {
+		font-size: 18px !important;
+		line-height: 24px !important;
+	}
+
+	.header-section {
+		padding: 50px 0px 0px !important;
+		height: auto !important;
+	}
+
+	.title-section {
+		height: auto !important;
+	}
+
+	.project-links {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.project-link {
+		text-align: center;
+	}
+}
+
 a:visited {
 	color: var(--link);
 	background-color: transparent;

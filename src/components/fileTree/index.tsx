@@ -1,6 +1,36 @@
 import './styles.css';
+import { useContentContext } from '../../context/ContentContext';
+import { useContext } from '../../AppContext';
 
-export default function FileTree() {
+interface FileTreeProps {
+	onFileSelect?: () => void;
+}
+
+export default function FileTree({ onFileSelect }: FileTreeProps) {
+	const { selectedFile, setSelectedFile } = useContentContext();
+	const { theme } = useContext();
+
+	const handleFileClick = (fileName: string) => {
+		setSelectedFile(fileName);
+		if (onFileSelect) {
+			onFileSelect();
+		}
+	};
+
+	const handleLinkClick = (url: string) => {
+		window.open(url, '_blank');
+		if (onFileSelect) {
+			onFileSelect();
+		}
+	};
+
+	const handleThemeToggle = (themeName: string) => {
+		theme.toggleTheme();
+		if (onFileSelect) {
+			onFileSelect();
+		}
+	};
+
 	return (
 		<div className="file-tree">
 			<div className="file-tree-title">
@@ -12,11 +42,17 @@ export default function FileTree() {
 					<span className="folder-icon">📁</span>
 					<span className="item-name">bem-vindo-ao-meu-portfolio</span>
 				</div>
-				<div className="file-tree-item file level-1">
+				<div
+					className={`file-tree-item file level-1 ${selectedFile === 'home.html' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('home.html')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">home.html</span>
 				</div>
-				<div className="file-tree-item file level-1">
+				<div
+					className={`file-tree-item file level-1 ${selectedFile === 'curriculo.pdf' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('curriculo.pdf')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">curriculo.pdf</span>
 				</div>
@@ -25,11 +61,17 @@ export default function FileTree() {
 					<span className="folder-icon">📁</span>
 					<span className="item-name">links</span>
 				</div>
-				<div className="file-tree-item file level-2">
+				<div
+					className="file-tree-item file level-2"
+					onClick={() => handleLinkClick('https://github.com/silveira42')}
+				>
 					<span className="file-icon terminal">⬜</span>
 					<span className="item-name">abrir-github.sh</span>
 				</div>
-				<div className="file-tree-item file level-2">
+				<div
+					className="file-tree-item file level-2"
+					onClick={() => handleLinkClick('https://linkedin.com/in/silveirabruno842')}
+				>
 					<span className="file-icon terminal">⬜</span>
 					<span className="item-name">abrir-linkedin.sh</span>
 				</div>
@@ -43,7 +85,10 @@ export default function FileTree() {
 					<span className="folder-icon">📁</span>
 					<span className="item-name">back-end</span>
 				</div>
-				<div className="file-tree-item file level-3">
+				<div
+					className={`file-tree-item file level-3 ${selectedFile === 'back-end/projeto-1.html' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('back-end/projeto-1.html')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">projeto-1.html</span>
 				</div>
@@ -52,11 +97,17 @@ export default function FileTree() {
 					<span className="folder-icon">📁</span>
 					<span className="item-name">front-end</span>
 				</div>
-				<div className="file-tree-item file level-3">
+				<div
+					className={`file-tree-item file level-3 ${selectedFile === 'front-end/projeto-1.html' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('front-end/projeto-1.html')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">projeto-1.html</span>
 				</div>
-				<div className="file-tree-item file level-3">
+				<div
+					className={`file-tree-item file level-3 ${selectedFile === 'front-end/projeto-2.html' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('front-end/projeto-2.html')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">projeto-2.html</span>
 				</div>
@@ -65,19 +116,31 @@ export default function FileTree() {
 					<span className="folder-icon">📁</span>
 					<span className="item-name">full-stack</span>
 				</div>
-				<div className="file-tree-item file level-3">
+				<div
+					className={`file-tree-item file level-3 ${selectedFile === 'full-stack/projeto-1.html' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('full-stack/projeto-1.html')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">projeto-1.html</span>
 				</div>
-				<div className="file-tree-item file level-3">
+				<div
+					className={`file-tree-item file level-3 ${selectedFile === 'full-stack/projeto-2.html' ? 'selected' : ''}`}
+					onClick={() => handleFileClick('full-stack/projeto-2.html')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">projeto-2.html</span>
 				</div>
-				<div className="file-tree-item file">
+				<div
+					className="file-tree-item file"
+					onClick={() => handleThemeToggle('modo-claro.css')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">modo-claro.css</span>
 				</div>
-				<div className="file-tree-item file">
+				<div
+					className="file-tree-item file"
+					onClick={() => handleThemeToggle('modo-escuro.css')}
+				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">modo-escuro.css</span>
 				</div>
