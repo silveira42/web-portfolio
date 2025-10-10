@@ -24,8 +24,15 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 		}
 	};
 
-	const handleThemeToggle = (themeName: string) => {
-		theme.toggleTheme();
+	const handleDarkTheme = () => {
+		theme.setTheme('dark');
+		if (onFileSelect) {
+			onFileSelect();
+		}
+	};
+
+	const handleLightTheme = () => {
+		theme.setTheme('light');
 		if (onFileSelect) {
 			onFileSelect();
 		}
@@ -61,20 +68,24 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					<span className="folder-icon">📁</span>
 					<span className="item-name">links</span>
 				</div>
-				<div
-					className="file-tree-item file level-2"
-					onClick={() => handleLinkClick('https://github.com/silveira42')}
-				>
-					<span className="file-icon terminal">⬜</span>
-					<span className="item-name">abrir-github.sh</span>
-				</div>
-				<div
-					className="file-tree-item file level-2"
-					onClick={() => handleLinkClick('https://linkedin.com/in/silveirabruno842')}
-				>
-					<span className="file-icon terminal">⬜</span>
-					<span className="item-name">abrir-linkedin.sh</span>
-				</div>
+				<a href='https://github.com/silveira42' target='_blank'>
+					<div
+						className="file-tree-item file level-2"
+						onClick={() => handleLinkClick('https://github.com/silveira42')}
+						>
+						<span className="file-icon terminal">⬜</span>
+						<span className="item-name">abrir-github.sh</span>
+					</div>
+				</a>
+				<a href='https://linkedin.com/in/silveirabruno842' target='_blank'>
+					<div
+						className="file-tree-item file level-2"
+						onClick={() => handleLinkClick('https://linkedin.com/in/silveirabruno842')}
+					>
+						<span className="file-icon terminal">⬜</span>
+						<span className="item-name">abrir-linkedin.sh</span>
+					</div>
+				</a>
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📁</span>
@@ -132,14 +143,14 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				</div>
 				<div
 					className="file-tree-item file"
-					onClick={() => handleThemeToggle('modo-claro.css')}
+					onClick={() => handleLightTheme()}
 				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">modo-claro.css</span>
 				</div>
 				<div
 					className="file-tree-item file"
-					onClick={() => handleThemeToggle('modo-escuro.css')}
+					onClick={() => handleDarkTheme()}
 				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">modo-escuro.css</span>

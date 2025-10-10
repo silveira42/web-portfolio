@@ -8,6 +8,7 @@ import enDictionary from './context/dictionary/en';
 const theme: Theme = {
 	getCurrent: () => localStorage.getItem('theme') as keyof Themes,
 	toggleTheme: () => {},
+	setTheme: (theme: keyof Themes) => {},
 };
 
 const intl: Intl = {
@@ -43,6 +44,10 @@ export const AppContextProvider = ({
 	theme.toggleTheme = () => {
 		setCurrentTheme(currentTheme === 'dark' ? 'light' : 'dark');
 	};
+	theme.setTheme = (theme: keyof Themes) =>
+	{
+		setCurrentTheme(theme)
+	}
 
 	intl.getLanguage = () => currentLanguage;
 	intl.getCurrency = () => currentCurrency;

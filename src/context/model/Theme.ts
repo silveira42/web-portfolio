@@ -6,4 +6,5 @@ export type Themes = {
 export type Theme = {
 	getCurrent: () => keyof Themes;
 	toggleTheme: () => void;
+	setTheme: (theme: keyof Themes) => void,
 };
