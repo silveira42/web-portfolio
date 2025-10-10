@@ -1,41 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 :root {
-	--background: #ffffff;
-	--foreground-1: #f0f0f0;
-	--foreground-2: #dadada;
-	--link: #00487c;
-	--link-selected: #007dd6;
-	--modal-background: rgba(0, 0, 0, 0.5);
-	--card-background: #f0f0f0;
-	--primary: #333333;
-	--button-bg: #000000;
-	--button-text: #ffffff;
-	--divider: #e0e0e0;
+	/* Terminal color scheme based on Figma design */
+	--background: #111111;
+	--sidebar-background: #111111;
+	--main-background: #181A1C;
+	--primary-text: #FFFFFF;
+	--accent-cyan: #2CE9EF;
+	--accent-magenta: #FF80FF;
+	--file-icon: #FFFFFF;
 	--transition: 0.3s;
 }
 
 [data-theme='dark'] {
-	--background: #000000;
-	--foreground-1: #1a1a1a;
-	--foreground-2: #4b4b4b;
-	--link: #0077cc;
-	--link-selected: #004475;
-	--modal-background: rgba(255, 255, 255, 0.5);
-	--card-background: #6d6d6d;
-	--primary: #dfdfdf;
-	--button-bg: #b8b8b8;
-	--button-text: #5a5a5a;
-	--divider: #4d4d4d;
+	/* Keep same terminal colors for consistency */
+	--background: #111111;
+	--sidebar-background: #111111;
+	--main-background: #181A1C;
+	--primary-text: #FFFFFF;
+	--accent-cyan: #2CE9EF;
+	--accent-magenta: #FF80FF;
+	--file-icon: #FFFFFF;
 	--transition: 0.3s;
 }
 
 .App {
-	max-width: 100vw;
-	min-height: 100vh;
-	font-family: 'Tomorrow';
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	font-family: 'JetBrains Mono', monospace;
 	background-color: var(--background);
+	color: var(--primary-text);
 	transition: all var(--transition);
+	overflow: hidden;
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 30px 20px;
+	width: 366px;
+	height: 100vh;
+	background: var(--sidebar-background);
+	flex-shrink: 0;
+}
+
+.main-content {
+	width: calc(100vw - 366px);
+	height: 100vh;
+	background: var(--main-background);
+	overflow-y: auto;
+}
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	width: calc(100% - 168px);
+	margin: 30px 84px;
 }
 
 a:visited {

@@ -1,0 +1,130 @@
+.file-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 326px;
+    height: 378px;
+    color: var(--primary-text);
+}
+
+.file-tree-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 326px;
+    height: 21px;
+    margin-bottom: 10px;
+}
+
+.path {
+    width: 221px;
+    height: 21px;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: var(--accent-magenta);
+}
+
+.file-tree-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 100%;
+    gap: 0px;
+}
+
+.file-tree-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 5px;
+    width: 326px;
+    height: 21px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.file-tree-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.file-tree-item.folder {
+    color: var(--accent-cyan);
+}
+
+.file-tree-item.file {
+    color: var(--primary-text);
+}
+
+.arrow {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    color: var(--primary-text);
+    transition: transform 0.2s;
+    transform: rotate(-90deg);
+}
+
+.arrow.open {
+    transform: rotate(0deg);
+}
+
+.folder-icon {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+}
+
+.file-icon {
+    width: 17px;
+    height: 17px;
+    font-size: 12px;
+    border: 1.2px solid var(--file-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-icon.terminal {
+    background: var(--primary-text);
+}
+
+.item-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.children {
+    width: 100%;
+}
+
+.file-tree-item.level-1 {
+    padding-left: 40px;
+}
+
+.file-tree-item.level-2 {
+    padding-left: 60px;
+}
+
+.file-tree-item.level-3 {
+    padding-left: 80px;
+}
+
+/* File names should be white */
+.file-tree-item.file .item-name {
+    color: var(--primary-text);
+}
+
+/* Folder names should be cyan regardless of nesting */
+.file-tree-item.folder .item-name {
+    color: var(--accent-cyan) !important;
+}
