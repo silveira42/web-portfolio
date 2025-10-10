@@ -54,7 +54,7 @@ export default function ProjectContent({ projectFile }: ProjectContentProps) {
 			<div className="header-section">
 				<div className="title-section">
 					<div className="greeting">Projeto não encontrado</div>
-					<div className="terminal-prompt">root@portfolio:~# cat {projectFile}</div>
+					<div className="terminal-prompt">root@portfolio:~/projects# cat {projectFile}</div>
 				</div>
 			</div>
 		);
@@ -74,7 +74,7 @@ export default function ProjectContent({ projectFile }: ProjectContentProps) {
 					<div className="greeting">{getCategory(projectFile)}</div>
 					<div className="name">{project.title}</div>
 					<div className="role">{project.technologies.join(' • ')}</div>
-					<div className="terminal-prompt">root@portfolio:~# cat {projectFile}</div>
+					<div className="terminal-prompt">root@portfolio:~/projects# cat {projectFile}</div>
 				</div>
 			</div>
 			<div className="content-section">

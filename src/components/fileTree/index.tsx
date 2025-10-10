@@ -46,7 +46,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 			<div className="file-tree-content">
 				<div className="file-tree-item folder">
 					<span className="arrow open">▼</span>
-					<span className="folder-icon">📁</span>
+					<span className="folder-icon">📂</span>
 					<span className="item-name">bem-vindo-ao-meu-portfolio</span>
 				</div>
 				<div
@@ -56,44 +56,44 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					<span className="file-icon">📄</span>
 					<span className="item-name">home.html</span>
 				</div>
-				<div
+				{/* <div
 					className={`file-tree-item file level-1 ${selectedFile === 'curriculo.pdf' ? 'selected' : ''}`}
 					onClick={() => handleFileClick('curriculo.pdf')}
 				>
 					<span className="file-icon">📄</span>
 					<span className="item-name">curriculo.pdf</span>
-				</div>
+				</div> */}
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
-					<span className="folder-icon">📁</span>
+					<span className="folder-icon">📂</span>
 					<span className="item-name">links</span>
 				</div>
-				<a href='https://github.com/silveira42' target='_blank'>
+				<a href='https://github.com/silveira42' target='_blank' rel="noreferrer">
 					<div
 						className="file-tree-item file level-2"
 						onClick={() => handleLinkClick('https://github.com/silveira42')}
 						>
-						<span className="file-icon terminal">⬜</span>
+						<span className="file-icon terminal">🔗</span>
 						<span className="item-name">abrir-github.sh</span>
 					</div>
 				</a>
-				<a href='https://linkedin.com/in/silveirabruno842' target='_blank'>
+				<a href='https://linkedin.com/in/silveirabruno842' target='_blank' rel="noreferrer">
 					<div
 						className="file-tree-item file level-2"
 						onClick={() => handleLinkClick('https://linkedin.com/in/silveirabruno842')}
 					>
-						<span className="file-icon terminal">⬜</span>
+						<span className="file-icon terminal">🔗</span>
 						<span className="item-name">abrir-linkedin.sh</span>
 					</div>
 				</a>
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
-					<span className="folder-icon">📁</span>
+					<span className="folder-icon">📂</span>
 					<span className="item-name">projects</span>
 				</div>
 				<div className="file-tree-item folder level-2">
 					<span className="arrow open">▼</span>
-					<span className="folder-icon">📁</span>
+					<span className="folder-icon">📂</span>
 					<span className="item-name">back-end</span>
 				</div>
 				<div
@@ -105,7 +105,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				</div>
 				<div className="file-tree-item folder level-2">
 					<span className="arrow open">▼</span>
-					<span className="folder-icon">📁</span>
+					<span className="folder-icon">📂</span>
 					<span className="item-name">front-end</span>
 				</div>
 				<div
@@ -124,7 +124,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				</div>
 				<div className="file-tree-item folder level-2">
 					<span className="arrow open">▼</span>
-					<span className="folder-icon">📁</span>
+					<span className="folder-icon">📂</span>
 					<span className="item-name">full-stack</span>
 				</div>
 				<div
@@ -141,18 +141,47 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					<span className="file-icon">📄</span>
 					<span className="item-name">projeto-2.html</span>
 				</div>
+				<div className="file-tree-item folder">
+					<span className="arrow open">▼</span>
+					<span className="folder-icon">📂</span>
+					<span className="item-name">config</span>
+				</div>
+				<div className="file-tree-item folder level-1">
+					<span className="arrow open">▼</span>
+					<span className="folder-icon">📂</span>
+					<span className="item-name">language</span>
+				</div>
 				<div
-					className="file-tree-item file"
+					className="file-tree-item file level-2"
+					onClick={() => handleDarkTheme()}
+				>
+					<span className="file-icon">🇧🇷</span>
+					<span className="item-name">portugues.srt</span>
+				</div>
+				<div
+					className="file-tree-item file level-2"
+					onClick={() => handleDarkTheme()}
+				>
+					<span className="file-icon">🇺🇸</span>
+					<span className="item-name">english.srt</span>
+				</div>
+				<div className="file-tree-item folder level-1">
+					<span className="arrow open">▼</span>
+					<span className="folder-icon">📂</span>
+					<span className="item-name">theme</span>
+				</div>
+				<div
+					className="file-tree-item file level-2"
 					onClick={() => handleLightTheme()}
 				>
-					<span className="file-icon">📄</span>
+					<span className="file-icon">🎨</span>
 					<span className="item-name">modo-claro.css</span>
 				</div>
 				<div
-					className="file-tree-item file"
+					className="file-tree-item file level-2"
 					onClick={() => handleDarkTheme()}
 				>
-					<span className="file-icon">📄</span>
+					<span className="file-icon">🎨</span>
 					<span className="item-name">modo-escuro.css</span>
 				</div>
 			</div>

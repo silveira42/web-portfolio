@@ -1,7 +1,7 @@
 export default function HomeContent() {
 	return (
 		<>
-			<div className="header-section">
+			<div className="header-section home">
 				<div className="title-section">
 					<div className="greeting">Olá, eu sou</div>
 					<div className="name">Bruno Silveira</div>
@@ -10,7 +10,7 @@ export default function HomeContent() {
 				</div>
 				<div className="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 			</div>
-			<div className="content-section">
+			<div className="content-section home">
 				<div className="about-section">
 					<div className="section-title">Sobre mim</div>
 					<div className="section-content">

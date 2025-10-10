@@ -1,291 +1,291 @@
 .main-content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    width: 100%;
-    height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
 }
 
 .header-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 130px 0px 0px;
-    gap: 50px;
-    width: 100%;
-    height: 431px;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	gap: 50px;
+	padding: 130px 0px 0px;
+	width: 100%;
+	flex: none;
+	order: 0;
+	align-self: stretch;
+	flex-grow: 0;
+}
+
+.header-section.home {
+	justify-content: center;
+	height: 100vh;
+	padding: 0px;
 }
 
 .title-section {
-    width: 100%;
-    height: 210px;
-    position: relative;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+	width: 100%;
+	height: 210px;
+	position: relative;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
 }
 
 .greeting {
-    position: absolute;
-    width: 478.67px;
-    height: 26px;
-    left: 0px;
-    bottom: 252px;
+	position: absolute;
+	width: 478.67px;
+	height: 26px;
+	left: 0px;
+	bottom: 252px;
 
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 26px;
 
-    color: var(--primary-text);
+	color: var(--primary-text);
 }
 
 .name {
-    position: absolute;
-    width: 812.38px;
-    height: 84px;
-    left: 0px;
-    bottom: 168px;
+	position: absolute;
+	width: 812.38px;
+	height: 84px;
+	left: 0px;
+	bottom: 168px;
 
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 84px;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 64px;
+	line-height: 84px;
 
-    color: var(--accent-magenta);
+	color: var(--accent-magenta);
 }
 
 .role {
-    position: absolute;
-    width: 100%;
-    height: 53px;
-    left: 0px;
-    bottom: 115px;
+	position: absolute;
+	width: 100%;
+	height: 53px;
+	left: 0px;
+	bottom: 115px;
 
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 53px;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 40px;
+	line-height: 53px;
 
-    color: var(--accent-cyan);
+	color: var(--accent-cyan);
 }
 
 .terminal-prompt {
-    position: absolute;
-    width: 100%;
-    height: 32px;
-    left: 0px;
-    bottom: 68px;
+	position: absolute;
+	width: 100%;
+	height: 32px;
+	left: 0px;
+	bottom: 68px;
 
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 32px;
 
-    color: var(--accent-magenta);
+	color: var(--accent-magenta);
 }
 
 .lorem-text {
-    width: 100%;
-    height: 18px;
+	width: 100%;
+	height: 18px;
 
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
 
-    color: var(--primary-text);
+	color: var(--primary-text);
 
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+	flex: none;
+	order: 1;
+	align-self: stretch;
+	flex-grow: 0;
 }
 
 .content-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 100px 0px;
-    gap: 70px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 70px;
+	padding: 100px 0px;
 
-    width: 100%;
-    height: 563px;
+	width: 100%;
 
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+	flex: none;
+	order: 1;
+	align-self: stretch;
+	flex-grow: 0;
+}
+
+.content-section.home {
+	padding: 0px 0px;
 }
 
 .about-section {
-    width: 100%;
-    height: 134px;
+	width: 100%;
+	height: 134px;
 
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    position: relative;
+	flex: none;
+	order: 0;
+	align-self: stretch;
+	flex-grow: 0;
+	position: relative;
 }
 
 .skills-section {
-    width: 100%;
-    height: 239px;
+	width: 100%;
+	height: 239px;
 
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-    position: relative;
+	flex: none;
+	order: 1;
+	align-self: stretch;
+	flex-grow: 0;
+	position: relative;
 }
 
 .section-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    color: var(--accent-cyan);
-    position: absolute;
-    top: 0px;
-    right: 0px;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 32px;
+	color: var(--accent-cyan);
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .skills-section .section-title {
-    left: 0px;
-    right: auto;
+	left: 0px;
+	right: auto;
 }
 
 .section-content {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    min-height: 72px;
-    left: 0px;
-    top: 62px;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	min-height: 72px;
+	left: 0px;
+	top: 62px;
 
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    text-align: justify;
+	font-family: 'JetBrains Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	text-align: justify;
 
-    color: var(--primary-text);
+	color: var(--primary-text);
 }
 
 /* Skills section specific styles */
 .skills-content {
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    top: 62px;
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 62px;
 }
 
 .skill-category {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .skill-category-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--accent-cyan);
-    margin-bottom: 8px;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 16px;
+	font-weight: 400;
+	color: var(--accent-cyan);
+	margin-bottom: 8px;
 }
 
 .skill-list {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    line-height: 18px;
-    color: var(--primary-text);
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 14px;
+	line-height: 18px;
+	color: var(--primary-text);
 }
 
 /* Curriculo section styles */
 .curriculo-section {
-    width: 100%;
-    margin-bottom: 50px;
-    position: relative;
+	width: 100%;
+	margin-bottom: 50px;
+	position: relative;
 }
 
 .experience-item,
 .education-item {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .experience-title,
 .education-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--accent-cyan);
-    margin-bottom: 5px;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 16px;
+	font-weight: 400;
+	color: var(--accent-cyan);
+	margin-bottom: 5px;
 }
 
 .experience-period {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-magenta);
-    margin-bottom: 8px;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 12px;
+	color: var(--accent-magenta);
+	margin-bottom: 8px;
 }
 
 .experience-description,
 .education-description {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    line-height: 18px;
-    color: var(--primary-text);
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 14px;
+	line-height: 18px;
+	color: var(--primary-text);
 }
 
 /* Project section styles */
 .project-section {
-    width: 100%;
-    margin-bottom: 50px;
-    position: relative;
+	width: 100%;
+	margin-bottom: 50px;
+	position: relative;
 }
 
 .tech-tag {
-    color: var(--accent-cyan);
+	color: var(--accent-magenta);
 }
 
 .project-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+	display: flex;
+	gap: 20px;
+	flex-wrap: wrap;
 }
 
 .project-link {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    color: var(--accent-magenta);
-    text-decoration: none;
-    border: 1px solid var(--accent-magenta);
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all 0.3s;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 14px;
+	color: var(--accent-magenta);
+	text-decoration: none;
+	border: 1px solid var(--accent-magenta);
+	padding: 8px 16px;
+	border-radius: 4px;
+	transition: all 0.3s;
 }
 
 .project-link:hover {
-    background-color: var(--accent-magenta);
-    color: var(--main-background);
-}
-
-.project-link:visited {
-    color: var(--accent-magenta);
-}
-
-.project-link:visited:hover {
-    color: var(--main-background);
+	background-color: var(--accent-magenta);
+	color: var(--main-background);
 }
