@@ -108,10 +108,17 @@
 	width: 17px;
 	height: 17px;
 	font-size: 12px;
-	/* border: 1.2px solid var(--file-icon); */
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	color: var(--file-icon);
+}
+
+/* Support for SVG icons in project files */
+.file-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
 }
 
 .item-name {

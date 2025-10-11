@@ -53,9 +53,11 @@ export default function HomeContent() {
 					<div className="greeting">Olá, eu sou</div>
 					<div className="name">Bruno Silveira</div>
 					<div className="role">desenvolvedor de software</div>
-					<div className="terminal-prompt">root@portfolio:~#</div>
+					<div className="terminal-prompt">
+						root@portfolio:~# <span className="blinking-cursor">█</span>
+					</div>
 				</div>
-				<div className="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+				<div className="lorem-text">ObjectScript | JavaScript | TypeScript | Python | Node.js | Express | Flask | Intersystems IRIS | Bash | SQL | IRIS DB | TDD | Agile (Scrum) | Code Review | Test Automation | Design Patterns | GitFlow | Software Architecture | Pipeline CI/CD</div>
 				<div
 					className="scroll-indicator"
 					style={{ opacity: scrollOpacity }}

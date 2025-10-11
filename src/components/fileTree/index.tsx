@@ -1,6 +1,8 @@
+import React, { Fragment } from 'react';
 import './styles.css';
 import { useContentContext } from '../../context/ContentContext';
 import { useContext } from '../../AppContext';
+import { useProjects } from '../../context/ProjectContext';
 
 interface FileTreeProps {
 	onFileSelect?: () => void;
@@ -9,8 +11,10 @@ interface FileTreeProps {
 export default function FileTree({ onFileSelect }: FileTreeProps) {
 	const { selectedFile, setSelectedFile } = useContentContext();
 	const { theme } = useContext();
+	const { getProjectsByCategory, getCategories } = useProjects();
 
 	const handleFileClick = (fileName: string) => {
+		console.log('FileTree: Clicking file:', fileName); // Debug log
 		setSelectedFile(fileName);
 		if (onFileSelect) {
 			onFileSelect();
@@ -97,56 +101,30 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					<span className="folder-icon">📂</span>
 					<span className="item-name">projects</span>
 				</div>
-				<div className="file-tree-item folder level-2">
-					<span className="arrow open">▼</span>
-					<span className="folder-icon">📂</span>
-					<span className="item-name">back-end</span>
-				</div>
-				<div
-					className={`file-tree-item file level-3 ${selectedFile === 'back-end/projeto-1.html' ? 'selected' : ''}`}
-					onClick={() => handleFileClick('back-end/projeto-1.html')}
-				>
-					<span className="file-icon">📄</span>
-					<span className="item-name">projeto-1.html</span>
-				</div>
-				<div className="file-tree-item folder level-2">
-					<span className="arrow open">▼</span>
-					<span className="folder-icon">📂</span>
-					<span className="item-name">front-end</span>
-				</div>
-				<div
-					className={`file-tree-item file level-3 ${selectedFile === 'front-end/projeto-1.html' ? 'selected' : ''}`}
-					onClick={() => handleFileClick('front-end/projeto-1.html')}
-				>
-					<span className="file-icon">📄</span>
-					<span className="item-name">projeto-1.html</span>
-				</div>
-				<div
-					className={`file-tree-item file level-3 ${selectedFile === 'front-end/projeto-2.html' ? 'selected' : ''}`}
-					onClick={() => handleFileClick('front-end/projeto-2.html')}
-				>
-					<span className="file-icon">📄</span>
-					<span className="item-name">projeto-2.html</span>
-				</div>
-				<div className="file-tree-item folder level-2">
-					<span className="arrow open">▼</span>
-					<span className="folder-icon">📂</span>
-					<span className="item-name">full-stack</span>
-				</div>
-				<div
-					className={`file-tree-item file level-3 ${selectedFile === 'full-stack/projeto-1.html' ? 'selected' : ''}`}
-					onClick={() => handleFileClick('full-stack/projeto-1.html')}
-				>
-					<span className="file-icon">📄</span>
-					<span className="item-name">projeto-1.html</span>
-				</div>
-				<div
-					className={`file-tree-item file level-3 ${selectedFile === 'full-stack/projeto-2.html' ? 'selected' : ''}`}
-					onClick={() => handleFileClick('full-stack/projeto-2.html')}
-				>
-					<span className="file-icon">📄</span>
-					<span className="item-name">projeto-2.html</span>
-				</div>
+
+				{/* Dynamic Project Categories */}
+				{getCategories().map((category) => (
+					<Fragment key={category}>
+						<div className="file-tree-item folder level-2">
+							<span className="arrow open">▼</span>
+							<span className="folder-icon">📂</span>
+							<span className="item-name">{category}</span>
+						</div>
+						{getProjectsByCategory(category).map((project) => {
+							const projectPath = `${project.category}/${project.filename}`;
+							return (
+								<div
+									key={project.id}
+									className={`file-tree-item file level-3 ${selectedFile === projectPath ? 'selected' : ''}`}
+									onClick={() => handleFileClick(projectPath)}
+								>
+									<img src={project.icon} alt={project.title} className="file-icon" />
+									<span className="item-name">{project.filename}</span>
+								</div>
+							);
+						})}
+					</Fragment>
+				))}
 				<div className="file-tree-item folder">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📂</span>
