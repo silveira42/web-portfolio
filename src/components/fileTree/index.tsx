@@ -10,8 +10,11 @@ interface FileTreeProps {
 
 export default function FileTree({ onFileSelect }: FileTreeProps) {
 	const { selectedFile, setSelectedFile } = useContentContext();
-	const { theme } = useContext();
+	const { theme, intl } = useContext();
 	const { getProjectsByCategory, getCategories } = useProjects();
+
+	const dictionary = intl.getDictionary();
+	const currentLanguage = intl.getLanguage();
 
 	const handleFileClick = (fileName: string) => {
 		console.log('FileTree: Clicking file:', fileName); // Debug log
@@ -37,7 +40,8 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 
 	const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
 		e.preventDefault(); // Prevent default navigation
-		const confirmed = window.confirm(`Você está prestes a abrir ${url} em uma nova aba. Confirma?`);
+		const confirmMessage = dictionary.portfolio.navigation.confirmDialog.replace('{url}', url);
+		const confirmed = window.confirm(confirmMessage);
 		if (confirmed) {
 			window.open(url, '_blank', 'noopener,noreferrer');
 		}
@@ -55,7 +59,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				<div className="file-tree-item folder">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📂</span>
-					<span className="item-name">bem-vindo-ao-meu-portfolio</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.welcome}</span>
 				</div>
 				<div
 					className={`file-tree-item file level-1 ${selectedFile === 'home.html' ? 'selected' : ''}`}
@@ -84,7 +88,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					onClick={(e) => handleLinkClick(e, 'https://github.com/silveira42')}
 				>
 					<span className="file-icon terminal">🔗</span>
-					<span className="item-name">abrir-github.sh</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.openGithub}</span>
 				</a>
 				<a
 					className="file-tree-item file level-2"
@@ -94,7 +98,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					onClick={(e) => handleLinkClick(e, 'https://linkedin.com/in/silveirabruno842')}
 				>
 					<span className="file-icon terminal">🔗</span>
-					<span className="item-name">abrir-linkedin.sh</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.openLinkedin}</span>
 				</a>
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
@@ -112,13 +116,14 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 						</div>
 						{getProjectsByCategory(category).map((project) => {
 							const projectPath = `${project.category}/${project.filename}`;
+							const projectContent = project.content[currentLanguage];
 							return (
 								<div
 									key={project.id}
 									className={`file-tree-item file level-3 ${selectedFile === projectPath ? 'selected' : ''}`}
 									onClick={() => handleFileClick(projectPath)}
 								>
-									<img src={project.icon} alt={project.title} className="file-icon" />
+									<img src={project.icon} alt={projectContent.title} className="file-icon" />
 									<span className="item-name">{project.filename}</span>
 								</div>
 							);
@@ -137,14 +142,14 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				</div>
 				<div
 					className="file-tree-item file level-2"
-					onClick={() => handleDarkTheme()}
+					onClick={() => intl.changeLanguage('pt_br')}
 				>
 					<span className="file-icon">🇧🇷</span>
 					<span className="item-name">portugues.srt</span>
 				</div>
 				<div
 					className="file-tree-item file level-2"
-					onClick={() => handleDarkTheme()}
+					onClick={() => intl.changeLanguage('en')}
 				>
 					<span className="file-icon">🇺🇸</span>
 					<span className="item-name">english.srt</span>

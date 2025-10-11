@@ -1,61 +1,57 @@
 import Dictionary from './Type';
 
 const pt_brDictionary: Dictionary = {
-	or: 'ou',
-	and: 'e',
-	greeting: 'Olá',
-	userName: 'Usuário',
-	close: 'Fechar',
-	welcomeBack: 'Bem-vindo de volta!',
-	welcome: 'Bem-vindo!',
-	loading: 'Carregando...',
-	signup: {
-		self: 'Cadastro',
-		action: 'Cadastrar',
-		fullName: 'Nome completo',
-		nickName: 'Primeiro nome',
-		fiscalId: 'CPF',
-		dateOfBirth: 'Data de nascimento',
-		email: 'E-mail',
-		password: 'Senha',
-		phone: 'Telefone',
-		username: 'Nome de usuário',
-		gender: {
-			self: 'Gênero',
-			notDeclared: 'Não declarado',
-			nonBinary: 'Não binário',
-			male: 'Masculino',
-			female: 'Feminino',
+	portfolio: {
+		home: {
+			greeting: 'Olá, eu sou',
+			name: 'Bruno Silveira',
+			role: 'desenvolvedor de software',
+			terminalPrompt: 'root@portfolio:~#',
+			aboutTitle: 'Sobre mim',
+			aboutContent: 'Vivamus ultricies enim finibus orci sollicitudin, non tristique orci interdum. Ut mattis, metus sed tempor faucibus, turpis nisi posuere tortor, id pulvinar quam libero a ligula. Praesent pharetra urna nulla, ac suscipit odio malesuada hendrerit. Duis dictum ex vel sem rutrum rutrum. Morbi quis diam consequat, tempor elit quis, fermentum est.',
+			skillsTitle: 'Skills',
+			skills: {
+				frontend: {
+					title: 'Frontend',
+					list: 'React • TypeScript • HTML • CSS • JavaScript'
+				},
+				backend: {
+					title: 'Backend',
+					list: 'Node.js • Python • Kafka • APIs RESTful'
+				},
+				devops: {
+					title: 'DevOps & Infraestrutura',
+					list: 'Docker • Nginx • Git • Linux • Redes'
+				}
+			}
 		},
+		projects: {
+			notFound: 'Projeto não encontrado',
+			categoryLabel: 'projeto',
+			stackLabel: 'Stack',
+			learningsLabel: 'O que eu aprendi',
+			viewCode: '📋 Ver código',
+			viewDemo: '🚀 Ver demonstração'
+		},
+		fileTree: {
+			welcome: 'bem-vindo-ao-meu-portfolio',
+			openGithub: 'abrir-github.sh',
+			openLinkedin: 'abrir-linkedin.sh',
+		},
+		navigation: {
+			confirmDialog: 'Você está prestes a abrir {url} em uma nova aba. Confirma?'
+		},
+		language: {
+			switchTo: 'Switch to English'
+		}
 	},
-	login: {
-		self: 'Login',
-	},
-	bank: {
-		self: 'Banco',
-		balance: 'Saldo',
-		reserved: 'Reservado',
-		total: 'Total',
-	},
-	creditBank: {
-		self: 'Fatura',
-		currentBill: 'Fatura atual',
-		closureDay: 'Dia de fechamento',
-		remainingAmount: 'Valor a pagar',
-		statementAmount: 'Valor da fatura',
-		reserved: 'Reservado',
-		total: 'Total',
-	},
-	menu: {
-		dashboard: 'Painel',
-		transactions: 'Transações',
-		banks: 'Bancos',
-		credit: 'Crédito',
-		settings: 'Configurações',
-		creditBanks: 'Faturas',
-		categories: 'Categorias',
-		periods: 'Períodos',
-	},
+	common: {
+		or: 'ou',
+		and: 'e',
+		greeting: 'Olá',
+		close: 'Fechar',
+		loading: 'Carregando...'
+	}
 };
 
 export default pt_brDictionary;

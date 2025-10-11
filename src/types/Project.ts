@@ -3,16 +3,26 @@ export interface Technology {
 	icon: string;
 }
 
+// Multilingual content for projects
+export interface ProjectContent {
+	title: string;
+	description: string;
+	learnings: string[];
+}
+
 export interface Project {
 	id: string;
 	filename: string;
 	icon: string; // SVG path in assets folder
 	category: 'front-end' | 'back-end' | 'full-stack' | 'sysadmin';
-	title: string;
-	description: string;
+	// Multilingual content
+	content: {
+		en: ProjectContent;
+		pt_br: ProjectContent;
+	};
+	// Language-independent data
 	gameImage: string;
 	technologies: Technology[];
-	learnings: string[];
 	linkToCode: string;
 	linkToDemo?: string;
 }

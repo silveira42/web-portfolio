@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useContext } from '../../../AppContext';
 
 export default function HomeContent() {
 	const [scrollOpacity, setScrollOpacity] = useState(1);
+	const { intl } = useContext();
+	const dictionary = intl.getDictionary();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -50,11 +53,11 @@ export default function HomeContent() {
 		<>
 			<div className="header-section home">
 				<div className="title-section">
-					<div className="greeting">Olá, eu sou</div>
-					<div className="name">Bruno Silveira</div>
-					<div className="role">desenvolvedor de software</div>
+					<div className="greeting">{dictionary.portfolio.home.greeting}</div>
+					<div className="name">{dictionary.portfolio.home.name}</div>
+					<div className="role">{dictionary.portfolio.home.role}</div>
 					<div className="terminal-prompt">
-						root@portfolio:~# <span className="blinking-cursor">█</span>
+						{dictionary.portfolio.home.terminalPrompt} <span className="blinking-cursor">█</span>
 					</div>
 				</div>
 				<div className="lorem-text">ObjectScript | JavaScript | TypeScript | Python | Node.js | Express | Flask | Intersystems IRIS | Bash | SQL | IRIS DB | TDD | Agile (Scrum) | Code Review | Test Automation | Design Patterns | GitFlow | Software Architecture | Pipeline CI/CD</div>
@@ -70,26 +73,9 @@ export default function HomeContent() {
 			</div>
 			<div className="content-section home">
 				<div className="about-section">
-					<div className="section-title">Sobre mim</div>
+					<div className="section-title">{dictionary.portfolio.home.aboutTitle}</div>
 					<div className="section-content">
-						Vivamus ultricies enim finibus orci sollicitudin, non tristique orci interdum. Ut mattis, metus sed tempor faucibus, turpis nisi posuere tortor, id pulvinar quam libero a ligula. Praesent pharetra urna nulla, ac suscipit odio malesuada hendrerit. Duis dictum ex vel sem rutrum rutrum. Morbi quis diam consequat, tempor elit quis, fermentum est.
-					</div>
-				</div>
-				<div className="skills-section">
-					<div className="section-title">Skills</div>
-					<div className="skills-content">
-						<div className="skill-category">
-							<div className="skill-category-title">Frontend</div>
-							<div className="skill-list">React • TypeScript • HTML • CSS • JavaScript</div>
-						</div>
-						<div className="skill-category">
-							<div className="skill-category-title">Backend</div>
-							<div className="skill-list">Node.js • Python • Kafka • APIs RESTful</div>
-						</div>
-						<div className="skill-category">
-							<div className="skill-category-title">DevOps & Infraestrutura</div>
-							<div className="skill-list">Docker • Nginx • Git • Linux • Redes</div>
-						</div>
+						{dictionary.portfolio.home.aboutContent}
 					</div>
 				</div>
 			</div>
