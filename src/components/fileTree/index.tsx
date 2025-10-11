@@ -17,13 +17,6 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 		}
 	};
 
-	const handleLinkClick = (url: string) => {
-		window.open(url, '_blank');
-		if (onFileSelect) {
-			onFileSelect();
-		}
-	};
-
 	const handleDarkTheme = () => {
 		theme.setTheme('dark');
 		if (onFileSelect) {
@@ -33,6 +26,17 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 
 	const handleLightTheme = () => {
 		theme.setTheme('light');
+		if (onFileSelect) {
+			onFileSelect();
+		}
+	};
+
+	const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+		e.preventDefault(); // Prevent default navigation
+		const confirmed = window.confirm(`Você está prestes a abrir ${url} em uma nova aba. Confirma?`);
+		if (confirmed) {
+			window.open(url, '_blank', 'noopener,noreferrer');
+		}
 		if (onFileSelect) {
 			onFileSelect();
 		}
@@ -68,23 +72,25 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					<span className="folder-icon">📂</span>
 					<span className="item-name">links</span>
 				</div>
-				<a href='https://github.com/silveira42' target='_blank' rel="noreferrer">
-					<div
-						className="file-tree-item file level-2"
-						onClick={() => handleLinkClick('https://github.com/silveira42')}
-						>
-						<span className="file-icon terminal">🔗</span>
-						<span className="item-name">abrir-github.sh</span>
-					</div>
+				<a
+					className="file-tree-item file level-2"
+					href='https://github.com/silveira42'
+					target='_blank'
+					rel="noreferrer"
+					onClick={(e) => handleLinkClick(e, 'https://github.com/silveira42')}
+				>
+					<span className="file-icon terminal">🔗</span>
+					<span className="item-name">abrir-github.sh</span>
 				</a>
-				<a href='https://linkedin.com/in/silveirabruno842' target='_blank' rel="noreferrer">
-					<div
-						className="file-tree-item file level-2"
-						onClick={() => handleLinkClick('https://linkedin.com/in/silveirabruno842')}
-					>
-						<span className="file-icon terminal">🔗</span>
-						<span className="item-name">abrir-linkedin.sh</span>
-					</div>
+				<a
+					className="file-tree-item file level-2"
+					href='https://linkedin.com/in/silveirabruno842'
+					target='_blank'
+					rel="noreferrer"
+					onClick={(e) => handleLinkClick(e, 'https://linkedin.com/in/silveirabruno842')}
+				>
+					<span className="file-icon terminal">🔗</span>
+					<span className="item-name">abrir-linkedin.sh</span>
 				</a>
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
