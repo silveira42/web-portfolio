@@ -289,3 +289,59 @@
 	background-color: var(--accent-magenta);
 	color: var(--main-background);
 }
+
+/* Scroll indicator styles */
+.scroll-indicator {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	transition: opacity 0.3s ease;
+	z-index: 10;
+}
+
+.scroll-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: 2px solid var(--accent-cyan);
+	border-radius: 50%;
+	background-color: transparent;
+	transition: all 0.3s ease;
+	animation: bounce 2s infinite;
+}
+
+.scroll-arrow span {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 18px;
+	color: var(--accent-cyan);
+	font-weight: bold;
+	margin-top: -2px;
+}
+
+.scroll-indicator:hover .scroll-arrow {
+	background-color: var(--tree-item-hover);
+	transform: scale(1.1);
+}
+
+@keyframes bounce {
+
+	0%,
+	20%,
+	50%,
+	80%,
+	100% {
+		transform: translateY(0);
+	}
+
+	40% {
+		transform: translateY(-8px);
+	}
+
+	60% {
+		transform: translateY(-4px);
+	}
+}
