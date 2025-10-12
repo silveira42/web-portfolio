@@ -29,6 +29,12 @@ const enDictionary: Dictionary = {
 			welcome: 'welcome-to-my-portfolio',
 			openGithub: 'open-github.sh',
 			openLinkedin: 'open-linkedin.sh',
+			projects: 'projects',
+			lightMode: 'light-mode.css',
+			darkMode: 'dark-mode.css',
+			config: 'config',
+			language: 'language',
+			theme: 'theme',
 		},
 		projects: {
 			notFound: 'Project not found',

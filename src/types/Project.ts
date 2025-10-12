@@ -1,6 +1,7 @@
 export interface Technology {
 	name: string;
-	icon: string;
+	iconLightTheme: string;
+	iconDarkTheme: string;
 }
 
 // Multilingual content for projects
@@ -13,7 +14,8 @@ export interface ProjectContent {
 export interface Project {
 	id: string;
 	filename: string;
-	icon: string; // SVG path in assets folder
+	iconLightTheme: string;
+	iconDarkTheme: string;
 	category: 'front-end' | 'back-end' | 'full-stack' | 'sysadmin';
 	// Multilingual content
 	content: {
@@ -21,7 +23,7 @@ export interface Project {
 		pt_br: ProjectContent;
 	};
 	// Language-independent data
-	gameImage: string;
+	projectImage: string;
 	technologies: Technology[];
 	linkToCode: string;
 	linkToDemo?: string;

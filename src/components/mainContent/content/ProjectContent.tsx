@@ -8,7 +8,7 @@ interface ProjectContentProps {
 
 export default function ProjectContent({ projectFile }: ProjectContentProps) {
 	const { getProjectByPath } = useProjects();
-	const { intl } = useContext();
+	const { intl, theme } = useContext();
 	const dictionary = intl.getDictionary();
 	const currentLanguage = intl.getLanguage();
 
@@ -47,7 +47,7 @@ export default function ProjectContent({ projectFile }: ProjectContentProps) {
 
 			{/* Game/Project Preview */}
 			<div className="project-preview">
-				<img src={project.gameImage} alt={projectContent.title} className="project-image" />
+				<img src={project.projectImage} alt={projectContent.title} className="project-image" />
 			</div>
 
 			{/* Description */}
@@ -67,7 +67,7 @@ export default function ProjectContent({ projectFile }: ProjectContentProps) {
 					<div className="tech-stack">
 						{project.technologies.map((tech: Technology, index: number) => (
 							<div key={index} className="tech-item" title={tech.name}>
-								<img src={tech.icon} alt={tech.name} className="tech-icon" />
+								<img src={theme.getCurrent() === 'dark' ? tech.iconDarkTheme : tech.iconLightTheme} alt={tech.name} className="tech-icon" />
 							</div>
 						))}
 					</div>

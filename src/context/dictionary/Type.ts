@@ -36,6 +36,12 @@ type Dictionary = {
 			welcome: string;
 			openGithub: string;
 			openLinkedin: string;
+			projects: string;
+			lightMode: string;
+			darkMode: string;
+			config: string;
+			language: string;
+			theme: string;
 		};
 		navigation: {
 			confirmDialog: string;

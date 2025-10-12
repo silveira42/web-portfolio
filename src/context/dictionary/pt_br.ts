@@ -37,6 +37,12 @@ const pt_brDictionary: Dictionary = {
 			welcome: 'bem-vindo-ao-meu-portfolio',
 			openGithub: 'abrir-github.sh',
 			openLinkedin: 'abrir-linkedin.sh',
+			projects: 'projetos',
+			lightMode: 'modo-claro.css',
+			darkMode: 'modo-escuro.css',
+			config: 'config',
+			language: 'idioma',
+			theme: 'tema',
 		},
 		navigation: {
 			confirmDialog: 'Você está prestes a abrir {url} em uma nova aba. Confirma?'

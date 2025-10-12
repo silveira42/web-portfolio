@@ -65,7 +65,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 					className={`file-tree-item file level-1 ${selectedFile === 'home.html' ? 'selected' : ''}`}
 					onClick={() => handleFileClick('home.html')}
 				>
-					<span className="file-icon">📄</span>
+					<span className="file-icon"><img src={theme.getCurrent() === 'dark' ? 'assets/icons/home-white.svg' : 'assets/icons/home.svg'} /></span>
 					<span className="item-name">home.html</span>
 				</div>
 				{/* <div
@@ -103,7 +103,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📂</span>
-					<span className="item-name">projects</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.projects}</span>
 				</div>
 
 				{/* Dynamic Project Categories */}
@@ -123,7 +123,7 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 									className={`file-tree-item file level-3 ${selectedFile === projectPath ? 'selected' : ''}`}
 									onClick={() => handleFileClick(projectPath)}
 								>
-									<img src={project.icon} alt={projectContent.title} className="file-icon" />
+									<img src={theme.getCurrent() === 'dark' ? project.iconDarkTheme : project.iconLightTheme} alt={projectContent.title} className="file-icon" />
 									<span className="item-name">{project.filename}</span>
 								</div>
 							);
@@ -133,12 +133,12 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				<div className="file-tree-item folder">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📂</span>
-					<span className="item-name">config</span>
+					<span className="item-name">.{dictionary.portfolio.fileTree.config}</span>
 				</div>
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📂</span>
-					<span className="item-name">language</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.language}</span>
 				</div>
 				<div
 					className="file-tree-item file level-2"
@@ -157,21 +157,21 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 				<div className="file-tree-item folder level-1">
 					<span className="arrow open">▼</span>
 					<span className="folder-icon">📂</span>
-					<span className="item-name">theme</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.theme}</span>
 				</div>
 				<div
 					className="file-tree-item file level-2"
 					onClick={() => handleLightTheme()}
 				>
 					<span className="file-icon">🎨</span>
-					<span className="item-name">modo-claro.css</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.lightMode}</span>
 				</div>
 				<div
 					className="file-tree-item file level-2"
 					onClick={() => handleDarkTheme()}
 				>
 					<span className="file-icon">🎨</span>
-					<span className="item-name">modo-escuro.css</span>
+					<span className="item-name">{dictionary.portfolio.fileTree.darkMode}</span>
 				</div>
 			</div>
 		</div>
