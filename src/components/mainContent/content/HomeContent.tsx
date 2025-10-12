@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useContext } from '../../../AppContext';
 import Contact from '../../contact';
+import ProjectCarousel from '../../projectCarousel';
+import { projects } from '../../../data/projects';
 
 export default function HomeContent() {
 	const [scrollOpacity, setScrollOpacity] = useState(1);
@@ -50,6 +52,13 @@ export default function HomeContent() {
 		}
 	};
 
+	const handleProjectClick = (project: any) => {
+		// You can navigate to project details here
+		// For now, we'll just log the project
+		console.log('Selected project:', project);
+		// TODO: Integrate with your routing system to navigate to project details
+	};
+
 	return (
 		<>
 			<div className="header-section home">
@@ -79,6 +88,10 @@ export default function HomeContent() {
 						{dictionary.portfolio.home.aboutContent}
 					</div>
 				</div>
+				<ProjectCarousel
+					projects={projects}
+					onProjectClick={handleProjectClick}
+				/>
 				<Contact />
 			</div>
 		</>

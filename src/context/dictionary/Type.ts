@@ -44,6 +44,7 @@ type Dictionary = {
 			learningsLabel: string;
 			viewCode: string;
 			viewDemo: string;
+			viewProject: string;
 		};
 		fileTree: {
 			welcome: string;

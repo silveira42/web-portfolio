@@ -44,7 +44,8 @@ const pt_brDictionary: Dictionary = {
 			stackLabel: 'Stack',
 			learningsLabel: 'O que eu aprendi',
 			viewCode: '📋 Ver código',
-			viewDemo: '🚀 Ver demonstração'
+			viewDemo: '🚀 Ver demonstração',
+			viewProject: 'Ver Projeto',
 		},
 		fileTree: {
 			welcome: 'bem-vindo-ao-meu-portfolio',

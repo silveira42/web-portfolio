@@ -55,7 +55,8 @@ const enDictionary: Dictionary = {
 			stackLabel: 'Stack',
 			learningsLabel: 'What I learned',
 			viewCode: '📋 View code',
-			viewDemo: '🚀 View demo'
+			viewDemo: '🚀 View demo',
+			viewProject: 'View Project'
 		},
 		navigation: {
 			confirmDialog: 'You are about to open {url} in a new tab. Confirm?'
