@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Project } from '../../types/Project';
 import ProjectCard from '../projectCard';
 import './styles.css';
@@ -9,15 +9,28 @@ interface ProjectCarouselProps {
 }
 
 export default function ProjectCarousel({ projects, onProjectClick }: ProjectCarouselProps) {
-	const [currentIndex, setCurrentIndex] = useState(0);
+	const [scrollOffset, setScrollOffset] = useState(0); // Pixel offset instead of slide index
 	const [cardsToShow, setCardsToShow] = useState(3);
+	const [autoScrollKey, setAutoScrollKey] = useState(0); // Key to force useEffect re-run
+	const [isDragging, setIsDragging] = useState(false);
+	const [containerWidth, setContainerWidth] = useState(0);
+	const carouselTrackRef = useRef<HTMLDivElement>(null);
+	const dragStateRef = useRef({
+		isDragging: false,
+		startX: 0,
+		startScrollOffset: 0,
+		currentScrollOffset: 0
+	});
 
-	// Update cards to show based on screen size
+	// Update cards to show based on screen size and track container width
 	useEffect(() => {
 		const updateCardsToShow = () => {
-			if (window.innerWidth < 768) {
+			const width = window.innerWidth;
+			setContainerWidth(width);
+
+			if (width < 768) {
 				setCardsToShow(1);
-			} else if (window.innerWidth < 1024) {
+			} else if (width < 1024) {
 				setCardsToShow(2);
 			} else {
 				setCardsToShow(3);
@@ -30,61 +43,144 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 		return () => window.removeEventListener('resize', updateCardsToShow);
 	}, []);
 
-	const maxIndex = Math.max(0, projects.length - cardsToShow);
+	// Calculate pixel movement needed to show next/previous set of cards
+	const getSlideWidth = () => {
+		const carouselElement = document.querySelector('.project-carousel') as HTMLElement;
+		const carouselWidth = carouselElement ? carouselElement.offsetWidth : containerWidth;
+		return carouselWidth * 0.75;
+	};
+
+	const maxScrollOffset = Math.max(0, (projects.length - cardsToShow) * getSlideWidth());
 
 	const goToPrevious = () => {
-		setCurrentIndex(prev => Math.max(0, prev - 1));
+		setAutoScrollKey(prev => prev + 1); // Reset auto-scroll timer
+		const slideWidth = getSlideWidth();
+		setScrollOffset(prev => Math.max(0, prev - slideWidth));
 	};
 
 	const goToNext = () => {
-		setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+		setAutoScrollKey(prev => prev + 1); // Reset auto-scroll timer
+		const slideWidth = getSlideWidth();
+		setScrollOffset(prev => Math.min(maxScrollOffset, prev + slideWidth));
 	};
 
-	const goToSlide = (index: number) => {
-		setCurrentIndex(Math.min(maxIndex, Math.max(0, index)));
+	// Direct DOM manipulation drag functionality - bypasses React state for performance
+	const handleDragStart = useCallback((clientX: number) => {
+		dragStateRef.current = {
+			isDragging: true,
+			startX: clientX,
+			startScrollOffset: scrollOffset,
+			currentScrollOffset: scrollOffset
+		};
+		setIsDragging(true);
+		setAutoScrollKey(prev => prev + 1); // Reset auto-scroll timer
+	}, [scrollOffset]);
+
+	const handleDragMove = useCallback((clientX: number) => {
+		if (!dragStateRef.current.isDragging || !carouselTrackRef.current) return;
+
+		const dragDistance = clientX - dragStateRef.current.startX;
+		const newOffset = dragStateRef.current.startScrollOffset - dragDistance;
+		const clampedOffset = Math.max(0, Math.min(maxScrollOffset, newOffset));
+
+		dragStateRef.current.currentScrollOffset = clampedOffset;
+
+		// Direct DOM manipulation - no React state update
+		carouselTrackRef.current.style.transform = `translateX(-${clampedOffset}px)`;
+	}, [maxScrollOffset]);
+
+	const handleDragEnd = useCallback(() => {
+		if (!dragStateRef.current.isDragging) return;
+
+		dragStateRef.current.isDragging = false;
+		setIsDragging(false);
+
+		// Sync React state with final position
+		setScrollOffset(dragStateRef.current.currentScrollOffset);
+	}, []);
+
+	// Mouse events
+	const handleMouseDown = (e: React.MouseEvent) => {
+		e.preventDefault();
+		handleDragStart(e.clientX);
 	};
 
-	// Auto-scroll functionality (optional)
+	// Touch events for mobile with optimized performance
+	const handleTouchStart = (e: React.TouchEvent) => {
+		e.preventDefault(); // Prevent scrolling
+		handleDragStart(e.touches[0].clientX);
+	};
+
+	const handleTouchMove = (e: React.TouchEvent) => {
+		e.preventDefault(); // Prevent scrolling
+		if (isDragging) {
+			handleDragMove(e.touches[0].clientX);
+		}
+	};
+
+	const handleTouchEnd = (e: React.TouchEvent) => {
+		e.preventDefault(); // Prevent scrolling
+		handleDragEnd();
+	};
+
+	// Auto-scroll functionality with timer reset on user interaction
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setCurrentIndex(prev => {
-				if (prev >= maxIndex) {
+			setScrollOffset(prev => {
+				const slideWidth = getSlideWidth();
+				const nextOffset = prev + slideWidth;
+				if (nextOffset >= maxScrollOffset) {
 					return 0; // Loop back to start
 				}
-				return prev + 1;
+				return nextOffset;
 			});
 		}, 8000); // Change slide every 8 seconds
 
 		return () => clearInterval(interval);
-	}, [maxIndex]);
+	}, [maxScrollOffset, autoScrollKey, containerWidth]); // Restart timer when dependencies change
+
+	// Optimized global mouse event listeners using direct DOM manipulation
+	useEffect(() => {
+		const handleGlobalMouseMove = (e: MouseEvent) => {
+			if (dragStateRef.current.isDragging) {
+				handleDragMove(e.clientX);
+			}
+		};
+
+		const handleGlobalMouseUp = () => {
+			if (dragStateRef.current.isDragging) {
+				handleDragEnd();
+			}
+		};
+
+		if (isDragging) {
+			document.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+			document.addEventListener('mouseup', handleGlobalMouseUp);
+		}
+
+		return () => {
+			document.removeEventListener('mousemove', handleGlobalMouseMove);
+			document.removeEventListener('mouseup', handleGlobalMouseUp);
+		};
+	}, [isDragging, handleDragMove, handleDragEnd]);
 
 	return (
 		<div className="project-carousel">
 			<div className="carousel-header">
-				<h2 className="carousel-title">Featured Projects</h2>
+				<h2 className="carousel-title column-prompt">Featured Projects</h2>
 				<div className="carousel-controls">
 					<button
 						className="carousel-btn carousel-btn-prev"
 						onClick={goToPrevious}
-						disabled={currentIndex === 0}
+						disabled={scrollOffset === 0}
 						aria-label="Previous projects"
 					>
 						‹
 					</button>
-					<div className="carousel-dots">
-						{Array.from({ length: maxIndex + 1 }, (_, index) => (
-							<button
-								key={index}
-								className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
-								onClick={() => goToSlide(index)}
-								aria-label={`Go to slide ${index + 1}`}
-							/>
-						))}
-					</div>
 					<button
 						className="carousel-btn carousel-btn-next"
 						onClick={goToNext}
-						disabled={currentIndex === maxIndex}
+						disabled={scrollOffset >= maxScrollOffset}
 						aria-label="Next projects"
 					>
 						›
@@ -92,19 +188,31 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 				</div>
 			</div>
 
-			<div className="carousel-container">
+			<div
+				className="carousel-container"
+				onMouseDown={handleMouseDown}
+				onTouchStart={handleTouchStart}
+				onTouchMove={handleTouchMove}
+				onTouchEnd={handleTouchEnd}
+				style={{
+					cursor: isDragging ? 'grabbing' : 'grab',
+					userSelect: 'none', // Prevent text selection during drag
+					touchAction: 'none' // Prevent default touch behaviors
+				}}
+			>
 				<div
+					ref={carouselTrackRef}
 					className="carousel-track"
 					style={{
-						transform: `translateX(-${currentIndex * (100 / cardsToShow)}%)`,
-						width: `${(projects.length / cardsToShow) * 100}%`
+						transform: `translateX(-${scrollOffset}px)`,
+						width: `${projects.length * (containerWidth / cardsToShow)}px`,
+						transition: isDragging ? 'none' : 'transform 0.3s ease-out'
 					}}
 				>
 					{projects.map((project, index) => (
 						<div
 							key={project.id}
 							className="carousel-slide"
-							style={{ width: `${100 / projects.length}%` }}
 						>
 							<ProjectCard
 								project={project}
@@ -113,13 +221,6 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 						</div>
 					))}
 				</div>
-			</div>
-
-			<div className="carousel-progress">
-				<div
-					className="carousel-progress-bar"
-					style={{ width: `${((currentIndex + 1) / (maxIndex + 1)) * 100}%` }}
-				/>
 			</div>
 		</div>
 	);
