@@ -31,7 +31,7 @@ export const projects: Project[] = [
 				]
 			}
 		},
-		projectImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=400&fit=crop&q=80',
+		projectImage: 'assets/project-thumbnails/pong.png',
 		technologies: [
 			{
 				name: 'React',

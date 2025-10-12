@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useContext } from '../../../AppContext';
+import Contact from '../../contact';
 
 export default function HomeContent() {
 	const [scrollOpacity, setScrollOpacity] = useState(1);
@@ -78,6 +79,7 @@ export default function HomeContent() {
 						{dictionary.portfolio.home.aboutContent}
 					</div>
 				</div>
+				<Contact />
 			</div>
 		</>
 	);

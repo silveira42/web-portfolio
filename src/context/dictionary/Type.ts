@@ -24,6 +24,19 @@ type Dictionary = {
 				};
 			};
 		};
+		contact: {
+			title: string;
+			email: string;
+			phone: string;
+			linkedin: string;
+			github: string;
+			location: string;
+			emailValue: string;
+			phoneValue: string;
+			linkedinValue: string;
+			githubValue: string;
+			locationValue: string;
+		};
 		projects: {
 			notFound: string;
 			categoryLabel: string;

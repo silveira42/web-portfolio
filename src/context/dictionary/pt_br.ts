@@ -25,6 +25,19 @@ const pt_brDictionary: Dictionary = {
 				}
 			}
 		},
+		contact: {
+			title: 'Contato',
+			email: 'email',
+			phone: 'celular',
+			linkedin: 'linkedIn',
+			github: 'github',
+			location: 'localização',
+			emailValue: 'silverdev42@gmail.com',
+			phoneValue: '+55 11 93448-0842',
+			linkedinValue: 'linkedin.com/in/silveirabruno842',
+			githubValue: 'github.com/silveira42',
+			locationValue: 'São Paulo, Brasil',
+		},
 		projects: {
 			notFound: 'Projeto não encontrado',
 			categoryLabel: 'projeto',

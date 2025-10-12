@@ -25,6 +25,19 @@ const enDictionary: Dictionary = {
 				}
 			}
 		},
+		contact: {
+			title: 'Contact',
+			email: 'email',
+			phone: 'phone',
+			linkedin: 'linkedIn',
+			github: 'github',
+			location: 'location',
+			emailValue: 'silverdev42@gmail.com',
+			phoneValue: '+55 11 93448-0842',
+			linkedinValue: 'linkedin.com/in/silveirabruno842',
+			githubValue: 'github.com/silveira42',
+			locationValue: 'São Paulo, Brazil',
+		},
 		fileTree: {
 			welcome: 'welcome-to-my-portfolio',
 			openGithub: 'open-github.sh',
