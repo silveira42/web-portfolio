@@ -17,7 +17,6 @@ export default function FileTree({ onFileSelect }: FileTreeProps) {
 	const currentLanguage = intl.getLanguage();
 
 	const handleFileClick = (fileName: string) => {
-		console.log('FileTree: Clicking file:', fileName); // Debug log
 		setSelectedFile(fileName);
 		if (onFileSelect) {
 			onFileSelect();

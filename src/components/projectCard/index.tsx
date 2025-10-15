@@ -15,7 +15,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 	const projectContent = project.content[currentLanguage as keyof typeof project.content];
 
 	return (
-		<div className="project-card" onClick={onClick}>
+		<div className="project-card">
 			<div className="project-card-image">
 				<img
 					src={project.projectImage}
@@ -23,7 +23,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 					loading="lazy"
 				/>
 				<div className="project-card-overlay">
-					<span className="view-project-text">
+					<span className="view-project-text" onClick={onClick}>
 						{dictionary.portfolio.projects.viewProject}
 					</span>
 				</div>

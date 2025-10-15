@@ -3,7 +3,7 @@
 	border: 1px solid var(--border-color);
 	border-radius: 8px;
 	overflow: hidden;
-	cursor: pointer;
+	cursor: default;
 	transition: all 0.3s ease;
 	height: 100%;
 	width: 400px;
@@ -63,6 +63,7 @@
 	border-radius: 4px;
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(4px);
+	cursor: pointer
 }
 
 .project-card-content {
@@ -84,7 +85,6 @@
 	font-size: 1.25rem;
 	font-weight: 600;
 	color: var(--text-color);
-	margin: 0;
 	line-height: 1.3;
 }
 
@@ -103,7 +103,6 @@
 	color: var(--text-secondary);
 	font-size: 0.9rem;
 	line-height: 1.5;
-	margin: 0;
 	flex-grow: 1;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -116,7 +115,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
-	margin-top: auto;
 }
 
 .tech-tag {

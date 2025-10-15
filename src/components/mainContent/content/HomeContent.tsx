@@ -3,11 +3,14 @@ import { useContext } from '../../../AppContext';
 import Contact from '../../contact';
 import ProjectCarousel from '../../projectCarousel';
 import { projects } from '../../../data/projects';
+import { useContentContext } from '../../../context/ContentContext';
+import { Project } from '../../../types/Project';
 
 export default function HomeContent() {
 	const [scrollOpacity, setScrollOpacity] = useState(1);
 	const { intl } = useContext();
 	const dictionary = intl.getDictionary();
+	const { setSelectedFile } = useContentContext();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -52,11 +55,8 @@ export default function HomeContent() {
 		}
 	};
 
-	const handleProjectClick = (project: any) => {
-		// You can navigate to project details here
-		// For now, we'll just log the project
-		console.log('Selected project:', project);
-		// TODO: Integrate with your routing system to navigate to project details
+	const handleProjectClick = (project: Project) => {
+		setSelectedFile(`${project.category}/${project.filename}`)
 	};
 
 	return (
