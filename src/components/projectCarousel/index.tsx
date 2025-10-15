@@ -9,6 +9,16 @@ interface ProjectCarouselProps {
 }
 
 export default function ProjectCarousel({ projects, onProjectClick }: ProjectCarouselProps) {
+	// Create a multiplied array of projects for infinite loop feeling
+	const multipliedProjects = Array.from({ length: projects.length * 20 }, (_, index) => {
+		const originalIndex = index % projects.length;
+		const repetitionNumber = Math.floor(index / projects.length);
+		return {
+			...projects[originalIndex],
+			id: `${projects[originalIndex].id}-repeat-${repetitionNumber}`
+		};
+	});
+
 	const [scrollOffset, setScrollOffset] = useState(0); // Pixel offset instead of slide index
 	const [cardsToShow, setCardsToShow] = useState(3);
 	const [autoScrollKey, setAutoScrollKey] = useState(0); // Key to force useEffect re-run
@@ -50,7 +60,7 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 		return carouselWidth * 0.75;
 	};
 
-	const maxScrollOffset = Math.max(0, (projects.length - cardsToShow) * getSlideWidth());
+	const maxScrollOffset = Math.max(0, (multipliedProjects.length - cardsToShow) * getSlideWidth());
 
 	const goToPrevious = () => {
 		setAutoScrollKey(prev => prev + 1); // Reset auto-scroll timer
@@ -205,11 +215,11 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 					className="carousel-track"
 					style={{
 						transform: `translateX(-${scrollOffset}px)`,
-						width: `${projects.length * (containerWidth / cardsToShow)}px`,
+						width: `${multipliedProjects.length * (containerWidth / cardsToShow)}px`,
 						transition: isDragging ? 'none' : 'transform 0.3s ease-out'
 					}}
 				>
-					{projects.map((project, index) => (
+					{multipliedProjects.map((project, index) => (
 						<div
 							key={project.id}
 							className="carousel-slide"

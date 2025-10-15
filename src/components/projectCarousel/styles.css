@@ -1,5 +1,4 @@
 .project-carousel {
-	margin: 3rem 0;
 	overflow: hidden;
 	width: 100%;
 }
@@ -8,14 +7,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 2rem;
 	gap: 1rem;
 }
 
 .carousel-title {
 	font-size: 1.5rem;
 	font-weight: 600;
-	margin: 0;
 }
 
 .carousel-controls {
@@ -92,13 +89,9 @@
 }
 
 @media (max-width: 768px) {
-	.project-carousel {
-		margin: 2rem 0;
-	}
+	.project-carousel {}
 
-	.carousel-header {
-		margin-bottom: 1.5rem;
-	}
+	.carousel-header {}
 
 	.carousel-title {
 		font-size: 1.1rem;
