@@ -24,6 +24,8 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 	const [autoScrollKey, setAutoScrollKey] = useState(0); // Key to force useEffect re-run
 	const [isDragging, setIsDragging] = useState(false);
 	const [containerWidth, setContainerWidth] = useState(0);
+	const [isVisible, setIsVisible] = useState(false); // Track if carousel is visible
+	const carouselRef = useRef<HTMLDivElement>(null);
 	const carouselTrackRef = useRef<HTMLDivElement>(null);
 	const dragStateRef = useRef({
 		isDragging: false,
@@ -31,6 +33,33 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 		startScrollOffset: 0,
 		currentScrollOffset: 0
 	});
+
+	// Intersection Observer to detect when carousel is visible
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						setIsVisible(true);
+					}
+				});
+			},
+			{
+				threshold: 0.3, // Trigger when 30% of the carousel is visible
+				rootMargin: '0px'
+			}
+		);
+
+		if (carouselRef.current) {
+			observer.observe(carouselRef.current);
+		}
+
+		return () => {
+			if (carouselRef.current) {
+				observer.unobserve(carouselRef.current);
+			}
+		};
+	}, []);
 
 	// Update cards to show based on screen size and track container width
 	useEffect(() => {
@@ -134,7 +163,10 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 	};
 
 	// Auto-scroll functionality with timer reset on user interaction
+	// Only starts when carousel is visible
 	useEffect(() => {
+		if (!isVisible) return; // Don't start auto-scroll until carousel is visible
+
 		const interval = setInterval(() => {
 			setScrollOffset(prev => {
 				const slideWidth = getSlideWidth();
@@ -147,7 +179,7 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 		}, 8000); // Change slide every 8 seconds
 
 		return () => clearInterval(interval);
-	}, [maxScrollOffset, autoScrollKey, containerWidth]); // Restart timer when dependencies change
+	}, [maxScrollOffset, autoScrollKey, containerWidth, isVisible]); // Restart timer when dependencies change
 
 	// Optimized global mouse event listeners using direct DOM manipulation
 	useEffect(() => {
@@ -175,7 +207,7 @@ export default function ProjectCarousel({ projects, onProjectClick }: ProjectCar
 	}, [isDragging, handleDragMove, handleDragEnd]);
 
 	return (
-		<div className="project-carousel">
+		<div className="project-carousel" ref={carouselRef}>
 			<div className="carousel-header">
 				<h2 className="carousel-title column-prompt">Featured Projects</h2>
 				<div className="carousel-controls">
