@@ -25,15 +25,57 @@ export default function Contact() {
 	};
 
 	const handleCopyToClipboard = (text: string, itemType: string) => {
-		navigator.clipboard.writeText(text).then(() => {
-			setCopiedItem(itemType);
-			// Reset after 2 seconds
-			setTimeout(() => {
-				setCopiedItem(null);
-			}, 2000);
-		}).catch(err => {
+		// Try modern clipboard API first
+		if (navigator.clipboard && navigator.clipboard.writeText) {
+			navigator.clipboard.writeText(text).then(() => {
+				setCopiedItem(itemType);
+				// Reset after 2 seconds
+				setTimeout(() => {
+					setCopiedItem(null);
+				}, 2000);
+			}).catch(err => {
+				console.error('Failed to copy. Fallback to legacy method. Error: ', err);
+				// Fallback to legacy method
+				fallbackCopyToClipboard(text, itemType);
+			});
+		} else {
+			// Use fallback method for non-secure contexts
+			fallbackCopyToClipboard(text, itemType);
+		}
+	};
+
+	const fallbackCopyToClipboard = (text: string, itemType: string) => {
+		// Create a temporary textarea element
+		const textArea = document.createElement('textarea');
+		textArea.value = text;
+
+		// Make it invisible but accessible
+		textArea.style.position = 'fixed';
+		textArea.style.left = '-999999px';
+		textArea.style.top = '-999999px';
+		document.body.appendChild(textArea);
+
+		// Select and copy the text
+		textArea.focus();
+		textArea.select();
+
+		try {
+			const successful = document.execCommand('copy');
+			if (successful) {
+				setCopiedItem(itemType);
+				// Reset after 2 seconds
+				setTimeout(() => {
+					setCopiedItem(null);
+				}, 2000);
+			} else {
+				console.error('Failed to copy text');
+			}
+		} catch (err) {
 			console.error('Failed to copy: ', err);
-		});
+		}
+
+		// Clean up
+		document.body.removeChild(textArea);
 	};
 
 	return (

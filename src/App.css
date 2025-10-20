@@ -11,6 +11,7 @@
 	--accent-cyan: #0F9EA3;
 	--accent-magenta: #DB00DB;
 	--file-icon: #000000;
+	--border-color: #000000;
 	--tree-item-hover: rgba(0, 0, 0, 0.1);
 	--tree-item-selected: rgba(44, 233, 239, 0.2);
 	--tree-item-selected-hover: rgba(44, 233, 239, 0.3);
@@ -26,6 +27,7 @@
 	--accent-cyan: #2CE9EF;
 	--accent-magenta: #FF80FF;
 	--file-icon: #FFFFFF;
+	--border-color: #FFFFFF;
 	--tree-item-hover: rgba(255, 255, 255, 0.1);
 	--tree-item-selected: rgba(44, 233, 239, 0.2);
 	--tree-item-selected-hover: rgba(44, 233, 239, 0.3);
